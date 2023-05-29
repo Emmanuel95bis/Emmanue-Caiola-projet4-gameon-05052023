@@ -218,6 +218,13 @@ label {
   color: red;
 }
 
+.formData #tournoi-error {
+  display: none;
+  font-size: 12px;
+  font-weight: 700;
+  color: red;
+}
+
 .formData-firstl {
   display: flex;
   flex-direction: column;

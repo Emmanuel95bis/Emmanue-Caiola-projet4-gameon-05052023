@@ -55,11 +55,11 @@
         <span class="close"></span>
         <div class="modal-body">
           <form name="reserve" id="reserve" class="reserve" action="index.html" method="get">
-            <div class="formData">
+               <div class="formData">
 
               <label for="lbfirst">Prénom</label>
 
-              <input class="text-control" type="text" id="lbfirst" name="first" minlength="2">
+              <input class="text-control" type="txt" id="lbfirst" name="first">
               <div class="formData-firstl">
                 <span id="lbfirst-error">Veuillez entrer 2 caractères ou plus pour le prénom</span>
               </div>
@@ -68,21 +68,21 @@
             <div class="formData">
 
               <label for="lblast">Nom</label>
-              <input class="text-control" type="text" id="lblast" name="last">
+              <input class="text-control"  type="txt" id="lblast" name="last">
               <div class="formData-firstl">
                 <span id="lblast-error">Veuillez entrer 2 caractères ou plus pour le nom</span>
               </div>
             </div>
             <div class="formData">
               <label for="lbemail">E-mail</label>
-              <input class="text-control" type="email" id="lbemail" name="email">
+              <input class="text-control"  id="lbemail" name="email">
               <div class="formData-firstl">
                 <span id="lbemail-error">adresse email incorrecte</span>
               </div>
             </div>
             <div class="formData">
               <label for="birthdate">Date de naissance</label>
-              <input class="text-control" type="date" id="birthdate" name="birthdate">
+              <input class="text-control"  type="date" id="birthdate" name="birthdate">
               <div class="formData-firstl">
                 <span id="lbbirthdate-error">Veuillez saisir votre date
                   de naissance</span>
@@ -90,17 +90,16 @@
             </div>
             <div class="formData">
               <label for="lbquantity">À combien de tournois GameOn avez-vous déjà participé ?</label>
-              <input type="number" class="text-control" id="lbquantity" name="quantity" min="0" max="99">
+              <input class="text-control" id="lbquantity" name="quantity" >
               <div class="formData-firstl">
                 <span id="lbquantity-error">Valeur numérique non valide</span>
               </div>
             </div>
             <div class="formData-firstl">
               <p class="text-label">A quel tournoi souhaitez-vous participer cette année ?</p>
-              <span id="location-error">Un tournoi doit être selectionné</span>
             </div>
             <div class="formData">
-              <input class="checkbox-input" type="radio" id="location1" name="location" value="New York" checked>
+              <input class="checkbox-input" type="radio" id="location1" name="location" value="New York">
               <label class="checkbox-label" for="location1">
                 <span class="checkbox-icon"></span>
                 New York</label>
@@ -123,7 +122,8 @@
               <input class="checkbox-input" type="radio" id="location6" name="location" value="Portland">
               <label class="checkbox-label" for="location6">
                 <span class="checkbox-icon"></span>
-                Portland</label>
+                Portland</label></br>
+                <span id="tournoi-error">Veuillez selectionner un tournoi</span>
             </div>
 
             <div class="formData">

@@ -7,12 +7,17 @@ const birthdayInput = document.getElementById("birthdate");
 const nbtInput = document.getElementById("lbquantity");
 const conditionInput = document.getElementById("checkbox1");
 
+const tournois = document.querySelectorAll("#reserve > div:nth-child(7)>input");
+const tournoi = 0;
+
+
 //pointer le span correspondant pour éventuellement l'affichage de l'erreur
 const prenomError = document.getElementById("lbfirst-error");
 const nomError = document.getElementById("lblast-error");
 const emailError = document.getElementById("lbemail-error");
 const birthdayError = document.getElementById("lbbirthdate-error");
 const nbtError = document.getElementById("lbquantity-error");
+const tournoiError = document.getElementById("tournoi-error");
 const conditionError = document.getElementById("condition-error");
 
 //tableau des erreurs de saisie
@@ -40,7 +45,7 @@ const confirmInscription = document.querySelector(".confirmation");
 //fonction de validation adresse email
 function checkEmail(email) {
   const re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-  
+
   return re.test(email);
 }
 
@@ -50,6 +55,7 @@ reserve.addEventListener("submit", (e) => {
   validationForm();
   //si le tableau Erreurs ne comporte pas d'erreurs
   if (Erreurs.length === 0) {
+    document.reserve.reset();
     modalbg.style.display = "none";
     confirmInscription.style.display = "block";
     //si le tableau Erreurs comporte une ou plusieurs erreurs  
@@ -58,18 +64,22 @@ reserve.addEventListener("submit", (e) => {
   }
 });
 
-[lbfirst, lblast, lbemail, birthdate, lbquantity, checkbox1].forEach((input) =>
+[lbfirst, lblast, lbemail, birthdate, lbquantity,location1, location2, location3, location4, location5, location6, checkbox1].forEach((input) =>
   input.addEventListener("input", secondeSaisie)
 )
 
+
+
+
 // Affiche une classe succes sur l'input concerné
 function secondeSaisie(e) {
-
+console.log(e.target.id.substr(0, 8));
   if (e.target.id == "lbfirst") prenomError.style.display = "none";
   if (e.target.id == "lblast") nomError.style.display = "none";
   if (e.target.id == "lbemail") emailError.style.display = "none";
   if (e.target.id == "birthdate") birthdayError.style.display = "none";
   if (e.target.id == "lbquantity") nbtError.style.display = "none";
+  if (e.target.id.substr(0, 8) == "location") tournoiError.style.display = "none";
   if (e.target.id == "checkbox1") conditionError.style.display = "none";
 }
 
@@ -92,6 +102,7 @@ function launchModal() {
 
 // close modal form
 function closeModal() {
+  document.reserve.reset();
   modalbg.style.display = "none";
 }
 
@@ -116,6 +127,15 @@ function validationForm() {
   if (checkEmail(email) == false) Erreurs.push(emailError);
   if (birthdayInput.value == '') Erreurs.push(birthdayError);
   if ((nbt == '') || (isNaN(nbt))) Erreurs.push(nbtError);
+  console.log(tournois);
+
+  let flag = false;
+  tournois.forEach(tournoi => {
+    if (tournoi.checked) flag = true;
+  });
+  if (flag === false) Erreurs.push(tournoiError);
+console.log(flag);
+
   if (conditionInput.checked == false) Erreurs.push(conditionError);
   return Erreurs;
 }
